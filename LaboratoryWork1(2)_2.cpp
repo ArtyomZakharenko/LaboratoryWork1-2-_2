@@ -1,4 +1,4 @@
-﻿#define _CRT_SECURE_NO_WARNINGS
+#define _CRT_SECURE_NO_WARNINGS
 #include <iostream>
 
 struct description {
@@ -16,8 +16,9 @@ int SetSize();
 struct film * CreateStructArray(int);
 void FillStructArray(struct film*, int);
 
-int ShowOptions();
-void OperationsWithArray(struct film*, int, int);
+void ShowOptions();
+void OperationsWithArray();
+void FindFilm (struct film *, int);
 
 
 int main()
@@ -53,7 +54,7 @@ void FillStructArray(struct film* arr, int size) {
 		printf("Enter length of film %d: ", i+1);
 		scanf("%d", &arr[i].length);
 		printf("Enter genre of film %d: ", i + 1);
-		scanf("%s", &arr[i].info.genre);
+		scanf("%19s", &arr[i].info.genre);
 		printf("Enter year of film %d: ", i + 1);
 		scanf("%d", &arr[i].info.year);
 	}
@@ -71,27 +72,26 @@ void ShowStructArray(struct film* arr, int size) {
 	}
 }
 
-int ShowOptions() {
+void ShowOptions() {
 	int option;
 	printf("What would you like to do with the library?\n");
 	printf("1. Find film with the same name\n");
 	printf("2. Delete film with length longer than entered\n");
 	printf("3. Show library\n\n");
 	printf("0. Exit.");
-
-	scanf("%d", &option);
-	
-	return option;
 }
 
-void OperationsWithArray(struct film * arr, int size, int opt) {
+void OperationsWithArray(struct film* arr, int size) {
+    int opt;
+    scanf("%d", opt);
+    
 	switch (opt) {
 	case 1: 
 		break;
 	case 2:
 		break;
 	case 3:
-		//ShowStructArray();
+		ShowStructArray(arr, size);
 		break;
 	case 0:
 		break;
@@ -102,3 +102,16 @@ void OperationsWithArray(struct film * arr, int size, int opt) {
 	}
 }
 
+void FindFilm (struct film * arr, int size){
+    char key[20];
+    int i;
+    printf ("Enter film name you want to find: ");
+    scanf("%19s", &key);
+    for (i = 0; i < size; i++){
+        if (strcmp(arr[i].film.name, key) == 0){
+            printf ()
+        }
+    }
+    
+    
+}
